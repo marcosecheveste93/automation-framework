@@ -4,19 +4,18 @@ import { InventoryPageData } from "../../data/pageData/inventoryPage.data";
 export class InventoryPage {
     private readonly page: Page;
     private readonly inventoryTitle: Locator;
+    private readonly addBackPackToCart: Locator;
+    private readonly shoppingCartLink: Locator;
     private readonly sortDropdown: Locator;
     private readonly productPrice: Locator;
-    
-
-
-
 
     constructor(page: Page) {
         this.page = page;
         this.inventoryTitle = page.locator('[data-test="title"]');
+        this.addBackPackToCart = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+        this.shoppingCartLink = page.locator('[data-test="shopping-cart-link"]');
         this.sortDropdown = page.locator('[data-test="product-sort-container"]');
         this.productPrice = page.locator('[data-test="inventory-item-price"]');
-
     }   
 
     async verifyInventoryPageIsDisplayed() {
@@ -25,6 +24,13 @@ export class InventoryPage {
         await expect(this.inventoryTitle).toHaveText(InventoryPageData.title);
     }
 
+    async addItemToCart() {
+        await this.addBackPackToCart.click();
+    }
+
+    async goToShoppingCart() {
+        await this.shoppingCartLink.click();
+    }
 
     async sortProductBy(option : string) {
         await this.sortDropdown.selectOption(option);
