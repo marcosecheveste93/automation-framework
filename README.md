@@ -119,19 +119,3 @@ Marcos Echeveste
 License
 ISC
 
-
-Luego commitea y crea el PR:
-
-```bash
-git add README.md
-git commit -m "Update README with complete project documentation"
-git push -u origin feature/update-readme
-
-gh pr create --title "Update README with complete project documentation" --body "Added comprehensive README with:
-- Project structure overview
-- Installation instructions
-- Test running commands
-- Test coverage documentation
-- CI/CD setup guide
-- Code quality commands"
-````
